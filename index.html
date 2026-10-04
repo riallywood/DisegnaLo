@@ -18,63 +18,23 @@
     --text: #fffffe;
     --muted: #a7a9be;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background:
-      radial-gradient(ellipse at 30% 20%, rgba(255,107,53,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 80%, rgba(155,93,229,0.08) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; overflow-x:hidden; }
+  body::before { content:''; position:fixed; top:-50%;left:-50%; width:200%;height:200%; background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(155,93,229,.08) 0%,transparent 50%); pointer-events:none; z-index:0; }
   .container { position:relative; z-index:1; width:100%; max-width:680px; }
 
   /* HEADER */
   .header-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; }
-
-  h1 {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(2.8rem,9vw,4.5rem); letter-spacing:4px;
-    background:linear-gradient(135deg,var(--accent),var(--yellow));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    flex:1; text-align:center;
-  }
-
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,9vw,4.5rem); letter-spacing:4px; background:linear-gradient(135deg,var(--accent),var(--yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; flex:1; text-align:center; }
   .manche-badge { background:var(--card); border:2px solid rgba(255,255,255,.12); border-radius:12px; padding:8px 14px; text-align:center; min-width:80px; }
   .manche-label { font-size:.55rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--muted); display:block; }
-  .manche-num   { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; line-height:1; color:var(--yellow); }
-
+  .manche-num { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; line-height:1; color:var(--yellow); }
   .subtitle { text-align:center; color:var(--muted); font-size:.85rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; }
 
   /* TURN BANNER */
-  .turn-banner {
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    padding:13px 20px; border-radius:14px; margin-bottom:20px;
-    font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:2px;
-    transition:background .4s,border-color .4s,color .4s,box-shadow .4s; border:2px solid;
-  }
+  .turn-banner { display:flex; align-items:center; justify-content:center; gap:10px; padding:13px 20px; border-radius:14px; margin-bottom:20px; font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:2px; transition:background .4s,border-color .4s,color .4s,box-shadow .4s; border:2px solid; }
   .turn-banner.team1 { background:rgba(6,214,160,.1); border-color:var(--green); color:var(--green); box-shadow:0 0 20px rgba(6,214,160,.15); }
-  .turn-banner.team2 { background:rgba(17,138,178,.1); border-color:var(--blue);  color:var(--blue);  box-shadow:0 0 20px rgba(17,138,178,.15); }
-
+  .turn-banner.team2 { background:rgba(17,138,178,.1); border-color:var(--blue); color:var(--blue); box-shadow:0 0 20px rgba(17,138,178,.15); }
   .turn-dot { width:10px; height:10px; border-radius:50%; animation:blink 1.2s ease-in-out infinite; }
   .team1 .turn-dot { background:var(--green); }
   .team2 .turn-dot { background:var(--blue); }
@@ -82,44 +42,23 @@
 
   /* CARDS AREA */
   .cards-area { margin-bottom:20px; }
-
-  .btn-genera-wrap {
-    display:flex; align-items:center; justify-content:center;
-    min-height:220px; border-radius:20px;
-    background:linear-gradient(135deg,rgba(255,107,53,.12),rgba(155,93,229,.12));
-    border:2px dashed rgba(255,107,53,.4);
-  }
+  .btn-genera-wrap { display:flex; align-items:center; justify-content:center; min-height:220px; border-radius:20px; background:linear-gradient(135deg,rgba(255,107,53,.12),rgba(155,93,229,.12)); border:2px dashed rgba(255,107,53,.4); }
   .btn-genera-wrap.hidden { display:none; }
-
-  .btn-genera {
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
-    width:100%; min-height:220px; padding:30px;
-    font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,5vw,2.2rem); letter-spacing:3px;
-    border:none; border-radius:18px; cursor:pointer;
-    background:transparent; color:var(--accent);
-    transition:color .2s,transform .15s;
-  }
+  .btn-genera { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; width:100%; min-height:220px; padding:30px; font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,5vw,2.2rem); letter-spacing:3px; border:none; border-radius:18px; cursor:pointer; background:transparent; color:var(--accent); transition:color .2s,transform .15s; }
   .btn-genera:hover { color:var(--yellow); transform:scale(1.03); }
   .btn-genera .genera-icon { font-size:3.5rem; animation:floatIcon 2.5s ease-in-out infinite; }
   @keyframes floatIcon { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 
   .cards-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .cards-grid.hidden { display:none; }
-
-  .word-card {
-    background:var(--card); border-radius:16px; padding:18px 16px;
-    position:relative; overflow:hidden; animation:cardIn .4s both;
-  }
+  .word-card { background:var(--card); border-radius:16px; padding:18px 16px; position:relative; overflow:hidden; animation:cardIn .4s both; }
   .word-card:nth-child(1){animation-delay:.05s;--cat-color:var(--blue);}
   .word-card:nth-child(2){animation-delay:.10s;--cat-color:var(--green);}
   .word-card:nth-child(3){animation-delay:.15s;--cat-color:var(--yellow);}
   .word-card:nth-child(4){animation-delay:.20s;--cat-color:var(--accent);}
   .word-card.proverb{--cat-color:var(--purple);}
-
   .word-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--cat-color); }
-
   @keyframes cardIn { from{opacity:0;transform:translateY(18px) scale(.97);} to{opacity:1;transform:translateY(0) scale(1);} }
-
   .cat-label { font-size:.62rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--cat-color); margin-bottom:7px; display:flex; align-items:center; gap:5px; }
   .word-text { font-size:clamp(.95rem,2.8vw,1.35rem); font-weight:900; line-height:1.25; color:var(--text); padding-right:38px; }
   .points-badge { position:absolute; top:12px;right:12px; background:var(--cat-color); color:var(--bg); font-size:.68rem; font-weight:900; padding:3px 8px; border-radius:20px; letter-spacing:1px; }
@@ -135,49 +74,23 @@
   .timer-number.warning{color:var(--yellow);}
   .timer-number.danger{color:var(--red);}
 
-  /* MAIN ACTION ROW */
+  /* BUTTONS */
   .main-btn-row { display:flex; gap:12px; }
-
-  .btn-start {
-    flex:2; padding:17px;
-    font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:3px;
-    border:none; border-radius:14px; cursor:pointer;
-    background:linear-gradient(135deg,var(--accent),#ff9a3c);
-    color:white; transition:transform .15s,box-shadow .15s;
-    box-shadow:0 4px 24px rgba(255,107,53,.35);
-    position:relative; overflow:hidden;
-  }
+  .btn-start { flex:2; padding:17px; font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:3px; border:none; border-radius:14px; cursor:pointer; background:linear-gradient(135deg,var(--accent),#ff9a3c); color:white; transition:transform .15s,box-shadow .15s; box-shadow:0 4px 24px rgba(255,107,53,.35); position:relative; overflow:hidden; }
   .btn-start::after { content:''; position:absolute;inset:0; background:linear-gradient(135deg,rgba(255,255,255,.12),transparent); border-radius:14px; }
   .btn-start:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 8px 32px rgba(255,107,53,.45); }
   .btn-start:disabled { opacity:.4; cursor:not-allowed; }
-
-  .btn-rigenera {
-    flex:1; padding:17px;
-    font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:2px;
-    border:2px solid rgba(255,255,255,.2); border-radius:14px; cursor:pointer;
-    background:transparent; color:var(--text);
-    transition:all .15s;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
-  }
+  .btn-rigenera { flex:1; padding:17px; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:2px; border:2px solid rgba(255,255,255,.2); border-radius:14px; cursor:pointer; background:transparent; color:var(--text); transition:all .15s; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
   .btn-rigenera .rigenera-icon { font-size:1.2rem; }
   .btn-rigenera:hover:not(:disabled) { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.35); }
   .btn-rigenera:disabled { opacity:.35; cursor:not-allowed; }
-
   .btn-row { display:flex; gap:10px; margin-top:10px; }
-
-  .btn-secondary {
-    flex:1; padding:13px 6px;
-    font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:1.5px;
-    border:2px solid rgba(255,255,255,.15); border-radius:14px;
-    cursor:pointer; background:transparent; color:var(--text); transition:all .15s;
-  }
+  .btn-secondary { flex:1; padding:13px 6px; font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:1.5px; border:2px solid rgba(255,255,255,.15); border-radius:14px; cursor:pointer; background:transparent; color:var(--text); transition:all .15s; }
   .btn-secondary:hover:not(:disabled) { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.3); }
   .btn-secondary:disabled { opacity:.35; cursor:not-allowed; }
-
   .btn-pause { border-color:var(--yellow); color:var(--yellow); }
   .btn-pause:hover:not(:disabled) { background:rgba(255,209,102,.1) !important; }
   .btn-pause.paused { background:rgba(255,209,102,.12); }
-
   .btn-fine { border-color:var(--red); color:var(--red); }
   .btn-fine:hover:not(:disabled) { background:rgba(239,35,60,.1) !important; }
 
@@ -199,12 +112,27 @@
   .overlay { display:none; position:fixed;inset:0; background:rgba(0,0,0,.92); z-index:100; align-items:center;justify-content:center; flex-direction:column; padding:24px; overflow-y:auto; }
   .overlay.show { display:flex; animation:fadeIn .3s both; }
   @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-
   .overlay-box { background:var(--card); border-radius:20px; padding:28px 24px; width:100%; max-width:500px; border:2px solid rgba(255,255,255,.08); }
   .overlay-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:3px; color:var(--red); text-align:center; margin-bottom:6px; }
-  .overlay-team-label { text-align:center; font-size:.75rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+  .overlay-team-label { text-align:center; font-size:.75rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
 
-  .check-list { display:flex; flex-direction:column; gap:10px; margin-bottom:22px; }
+  /* BONUS BANNER */
+  .bonus-banner { display:flex; align-items:center; justify-content:space-between; border-radius:12px; padding:12px 16px; margin-bottom:16px; border:2px solid; }
+  .bonus-banner.bonus5 { background:rgba(6,214,160,.12); border-color:var(--green); }
+  .bonus-banner.bonus3 { background:rgba(255,209,102,.1); border-color:var(--yellow); }
+  .bonus-banner.bonus2 { background:rgba(255,107,53,.1); border-color:var(--accent); }
+  .bonus-banner.bonus1 { background:rgba(155,93,229,.1); border-color:var(--purple); }
+  .bonus-banner.bonus0 { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.1); }
+  .bonus-label { font-size:.65rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+  .bonus-desc { font-size:.8rem; font-weight:700; color:var(--text); margin-top:2px; }
+  .bonus-pts { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:2px; }
+  .bonus5 .bonus-pts { color:var(--green); }
+  .bonus3 .bonus-pts { color:var(--yellow); }
+  .bonus2 .bonus-pts { color:var(--accent); }
+  .bonus1 .bonus-pts { color:var(--purple); }
+  .bonus0 .bonus-pts { color:var(--muted); }
+
+  .check-list { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
   .check-row { display:flex;align-items:center;gap:12px; background:rgba(255,255,255,.04); border-radius:12px; padding:12px 14px; cursor:pointer; border:2px solid rgba(255,255,255,.07); transition:border-color .2s,background .2s; user-select:none; }
   .check-row.checked { border-color:var(--row-color); background:rgba(var(--row-rgb),.1); }
   .check-icon { width:28px;height:28px; border-radius:50%; border:2px solid rgba(255,255,255,.25); display:flex;align-items:center;justify-content:center; font-size:1rem;flex-shrink:0; transition:background .2s,border-color .2s; color:transparent; }
@@ -217,23 +145,41 @@
 
   .total-bar { display:flex;align-items:center;justify-content:space-between; background:rgba(255,255,255,.06); border-radius:12px;padding:14px 18px;margin-bottom:18px; }
   .total-label { font-size:.7rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--muted); }
+  .total-breakdown { text-align:right; }
   .total-pts { font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--yellow);letter-spacing:2px; }
+  .total-detail { font-size:.7rem; color:var(--muted); margin-top:2px; }
 
   .overlay-confirm { width:100%;padding:16px; font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px; border:none;border-radius:14px;cursor:pointer; background:linear-gradient(135deg,var(--accent),#ff9a3c); color:white;box-shadow:0 4px 24px rgba(255,107,53,.4); transition:transform .15s; }
   .overlay-confirm:hover { transform:scale(1.02); }
 
-  @keyframes pulse-ring { 0%,100%{filter:drop-shadow(0 0 4px var(--accent));}  50%{filter:drop-shadow(0 0 14px var(--accent));} }
+  @keyframes pulse-ring { 0%,100%{filter:drop-shadow(0 0 4px var(--accent));} 50%{filter:drop-shadow(0 0 14px var(--accent));} }
   .ring-active { animation:pulse-ring 2s ease-in-out infinite; }
 
   /* TOAST */
   .toast { position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px); background:var(--card);border:2px solid rgba(255,255,255,.15); border-radius:14px;padding:14px 28px; font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px; color:var(--text);z-index:200; transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s; opacity:0;white-space:nowrap; }
   .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+  /* ABBANDONA */
+  .btn-abbandona-wrap { text-align:center; margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,.06); }
+  .btn-abbandona { background:transparent; border:2px solid rgba(239,35,60,.35); color:rgba(239,35,60,.6); border-radius:12px; padding:10px 28px; font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:2px; cursor:pointer; transition:all .2s; }
+  .btn-abbandona:hover { border-color:var(--red); color:var(--red); background:rgba(239,35,60,.07); }
+
+  /* CONFIRM ABBANDONA OVERLAY */
+  .confirm-overlay { display:none; position:fixed;inset:0; background:rgba(0,0,0,.88); z-index:300; align-items:center;justify-content:center; padding:24px; }
+  .confirm-overlay.show { display:flex; animation:fadeIn .25s both; }
+  .confirm-box { background:var(--card); border-radius:20px; padding:32px 26px; width:100%; max-width:380px; text-align:center; border:2px solid rgba(239,35,60,.3); }
+  .confirm-icon { font-size:2.8rem; margin-bottom:14px; }
+  .confirm-title { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:3px; color:var(--red); margin-bottom:8px; }
+  .confirm-msg { color:var(--muted); font-size:.9rem; line-height:1.5; margin-bottom:26px; }
+  .confirm-btns { display:flex; gap:12px; }
+  .confirm-btn-yes { flex:1; padding:14px; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:2px; border:none; border-radius:12px; cursor:pointer; background:var(--red); color:white; transition:opacity .15s; }
+  .confirm-btn-yes:hover { opacity:.85; }
+  .confirm-btn-no { flex:1; padding:14px; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:2px; border:2px solid rgba(255,255,255,.2); border-radius:12px; cursor:pointer; background:transparent; color:var(--text); transition:all .15s; }
+  .confirm-btn-no:hover { background:rgba(255,255,255,.07); }
 </style>
 </head>
 <body>
 <div class="container">
-
-  <!-- HEADER -->
   <div class="header-row">
     <div style="width:80px"></div>
     <h1>DisegnaLo!</h1>
@@ -244,23 +190,18 @@
   </div>
   <p class="subtitle">Gioco a squadre • Disegna &amp; Indovina</p>
 
-  <!-- TURN BANNER -->
   <div class="turn-banner team1" id="turnBanner">
     <div class="turn-dot"></div>
     <span id="turnLabel">Turno — Squadra 1</span>
   </div>
 
-  <!-- CARDS AREA -->
   <div class="cards-area">
-    <!-- GENERA button -->
     <div class="btn-genera-wrap" id="generaWrap">
       <button class="btn-genera" onclick="generateAndShow()">
         <span class="genera-icon">🎲</span>
         GENERA PAROLE
       </button>
     </div>
-
-    <!-- CARDS -->
     <div class="cards-grid hidden" id="cardsGrid">
       <div class="word-card" id="card0"><div class="cat-label" id="catLabel0"></div><div class="word-text" id="word0"></div><span class="points-badge" id="pts0"></span></div>
       <div class="word-card" id="card1"><div class="cat-label" id="catLabel1"></div><div class="word-text" id="word1"></div><span class="points-badge" id="pts1"></span></div>
@@ -269,7 +210,6 @@
     </div>
   </div>
 
-  <!-- TIMER -->
   <div class="timer-wrap">
     <div class="timer-ring" id="timerRing">
       <svg viewBox="0 0 130 130">
@@ -280,7 +220,6 @@
     </div>
   </div>
 
-  <!-- MAIN ACTION ROW: INIZIO + RIGENERA -->
   <div class="main-btn-row">
     <button class="btn-start" id="btnStart" onclick="startTimer()">▶ INIZIO</button>
     <button class="btn-rigenera" id="btnRigenera" onclick="regenWords()" disabled>
@@ -288,14 +227,11 @@
       RIGENERA
     </button>
   </div>
-
-  <!-- SECONDARY ROW: PAUSA + FINE -->
   <div class="btn-row">
     <button class="btn-secondary btn-pause" id="btnPause" onclick="togglePause()" disabled>⏸ PAUSA</button>
     <button class="btn-secondary btn-fine"  id="btnFine"  onclick="endTurn()"    disabled>⏹ FINE</button>
   </div>
 
-  <!-- SCORES -->
   <div class="scores-section">
     <div class="scores-title">PUNTEGGIO</div>
     <div class="teams-row">
@@ -316,6 +252,9 @@
         </div>
       </div>
     </div>
+    <div class="btn-abbandona-wrap">
+      <button class="btn-abbandona" onclick="chiediAbbandona()">🚩 ABBANDONA PARTITA</button>
+    </div>
   </div>
 </div>
 
@@ -324,26 +263,118 @@
   <div class="overlay-box">
     <div class="overlay-title" id="overlayTitle">⏰ TEMPO SCADUTO!</div>
     <div class="overlay-team-label" id="overlayTeamLabel">Squadra 1 — Seleziona le parole indovinate</div>
+
+    <!-- BONUS BANNER -->
+    <div class="bonus-banner" id="bonusBanner">
+      <div>
+        <div class="bonus-label">Bonus velocità</div>
+        <div class="bonus-desc" id="bonusDesc">—</div>
+      </div>
+      <div class="bonus-pts" id="bonusPts">+0</div>
+    </div>
+
     <div class="check-list" id="checkList"></div>
+
     <div class="total-bar">
-      <span class="total-label">Punti guadagnati</span>
-      <span class="total-pts" id="totalPts">0</span>
+      <span class="total-label">Totale turno</span>
+      <div class="total-breakdown">
+        <div class="total-pts" id="totalPts">0</div>
+        <div class="total-detail" id="totalDetail"></div>
+      </div>
     </div>
     <button class="overlay-confirm" onclick="confirmScore()">✔ CONFERMA E CONTINUA</button>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<!-- CONFERMA ABBANDONA -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-icon">🚩</div>
+    <div class="confirm-title">Sei sicuro?</div>
+    <div class="confirm-msg">Stai per abbandonare la partita.<br>Tutti i punteggi verranno azzerati<br>e si ricomincia da capo.</div>
+    <div class="confirm-btns">
+      <button class="confirm-btn-no" onclick="chiudiConfirm()">NO, TORNA</button>
+      <button class="confirm-btn-yes" onclick="abbandonaPartita()">SÌ, ABBANDONA</button>
+    </div>
+  </div>
+</div>
+
 <script>
-// ── WORD LISTS ───────────────────────────────────────────────
+// ── WORD LISTS (100+ per categoria) ─────────────────────────
 const WORDS = {
-  luoghi:   ["Foresta","Grotta","Castello","Spiaggia","Deserto","Vulcano","Mercato","Stadio","Faro","Biblioteca","Aeroporto","Circo","Labirinto","Porto","Monastero","Isola","Campanile","Oasi","Cattedrale","Prigione","Ospedale","Scuderia","Cimitero","Piscina","Pizzeria","Farmacia","Palestra","Discoteca","Banca","Museo"],
-  cose:     ["Ombrello","Chiave","Ancora","Lanterna","Trapano","Mappamondo","Bussola","Sofà","Tromba","Baule","Forbici","Altalena","Flauto","Bilancia","Tamburo","Brocca","Specchio","Torcia","Clessidra","Carrucola","Martello","Bottone","Candela","Pettine","Spazzolino","Forchetta","Cucchiaio","Pentola","Cuscino","Fischietto"],
-  animali:  ["Cane","Gatto","Elefante","Leone","Tigre","Giraffa","Scimmia","Pinguino","Coccodrillo","Serpente","Aquila","Delfino","Cavallo","Mucca","Maiale","Gallina","Coniglio","Volpe","Lupo","Orso","Zebra","Rinoceronte","Ippopotamo","Cammello","Pecora","Capra","Asino","Toro","Pappagallo","Gufo"],
-  azioni:   ["Arrampicarsi","Fischiare","Sbadigliare","Inciampare","Galleggiare","Tuffarsi","Tamburellare","Sbirciare","Barcollare","Accarezzare","Spingere","Rimbalzare","Solleticare","Dondolare","Rotolare","Afferrare","Saltellare","Correre","Nuotare","Volare","Dormire","Mangiare","Piangere","Ridere","Urlare","Ballare","Cantare","Scavare","Abbracciare","Sculacciare"],
-  proverbi: ["Il lupo perde il pelo ma non il vizio","Chi dorme non piglia pesci","Gallina vecchia fa buon brodo","Non tutte le ciambelle riescono col buco","Meglio un uovo oggi che una gallina domani","L'abito non fa il monaco","Chi va piano va sano e va lontano","A caval donato non si guarda in bocca","Il mattino ha l'oro in bocca","Tra il dire e il fare c'è di mezzo il mare"]
+  luoghi: [
+    "Foresta","Grotta","Castello","Spiaggia","Deserto","Vulcano","Mercato","Stadio","Faro","Biblioteca",
+    "Aeroporto","Circo","Labirinto","Porto","Monastero","Isola","Campanile","Oasi","Cattedrale","Prigione",
+    "Ospedale","Scuderia","Cimitero","Piscina","Pizzeria","Farmacia","Palestra","Discoteca","Banca","Museo",
+    "Fabbrica","Miniera","Capanna","Palazzo","Ponte","Tunnel","Diga","Fognatura","Acquario","Zoo",
+    "Planetario","Osservatorio","Fienile","Stalla","Granaio","Cantina","Soffitta","Seminterrato","Terrazza","Balcone",
+    "Giardino","Parco","Piazza","Vicolo","Boulevard","Autostrada","Rotonda","Svincolo","Casello","Dogana",
+    "Confine","Frontiera","Valico","Rifugio","Capanno","Igloo","Tenda","Roulotte","Caravansarai","Locanda",
+    "Albergo","Ostello","Pensione","Resort","Spa","Terme","Sanatorio","Clinica","Ambulatorio","Pronto soccorso",
+    "Caserma","Fortezza","Bunker","Torre","Faro","Molo","Banchina","Darsena","Marina","Cantiere navale",
+    "Officina","Garage","Autodromo","Ippodromo","Velodromo","Palazzetto","Arena","Anfiteatro","Teatro","Cinema",
+    "Opera","Galleria d'arte","Auditorium","Sala prove","Studio di registrazione","Stazione","Metrò","Deposito","Hangar","Piattaforma"
+  ],
+  cose: [
+    "Ombrello","Chiave","Ancora","Lanterna","Trapano","Mappamondo","Bussola","Sofà","Tromba","Baule",
+    "Forbici","Altalena","Flauto","Bilancia","Tamburo","Brocca","Specchio","Torcia","Clessidra","Carrucola",
+    "Martello","Bottone","Candela","Pettine","Spazzolino","Forchetta","Cucchiaio","Pentola","Cuscino","Fischietto",
+    "Cannocchiale","Telescopio","Microscopio","Bussola","Sestante","Barometro","Termometro","Cronometro","Metronomo","Diapason",
+    "Fisarmonica","Mandolino","Violino","Violoncello","Contrabbasso","Arpa","Clavicembalo","Organo","Tuba","Trombone",
+    "Clarino","Oboe","Fagotto","Sassofono","Castanet","Maracas","Xilofono","Glockenspiel","Vibrafono","Campana",
+    "Scudo","Elmo","Corazza","Lancia","Arco","Balestra","Catapulta","Mangano","Ariete","Picca",
+    "Zaino","Valigia","Borsa","Cartella","Portafoglio","Cintura","Cinturino","Braccialetto","Collana","Orecchino",
+    "Anello","Diadema","Corona","Scettro","Globo","Sigillo","Timbro","Francobollo","Busta","Pergamena",
+    "Calcolatrice","Abaco","Regolo","Compassi","Squadra","Righello","Goniometro","Livella","Filo a piombo","Nastro metrico"
+  ],
+  animali: [
+    "Cane","Gatto","Elefante","Leone","Tigre","Giraffa","Scimmia","Pinguino","Coccodrillo","Serpente",
+    "Aquila","Delfino","Cavallo","Mucca","Maiale","Gallina","Coniglio","Volpe","Lupo","Orso",
+    "Zebra","Rinoceronte","Ippopotamo","Cammello","Pecora","Capra","Asino","Toro","Pappagallo","Gufo",
+    "Farfalla","Ape","Formica","Ragno","Lumaca","Tartaruga","Rana","Rospo","Salamandra","Topo",
+    "Ratto","Scoiattolo","Riccio","Talpa","Pipistrello","Balena","Squalo","Polpo","Granchio","Aragosta",
+    "Ostrica","Medusa","Calamaro","Seppia","Stella marina","Corallo","Fenicottero","Pellicano","Cicogna","Airone",
+    "Gabbiano","Corvo","Merlo","Passero","Rondine","Rondone","Cardellino","Fringuello","Canarino","Picchio",
+    "Civetta","Falco","Poiana","Nibbio","Avvoltoio","Struzzo","Emu","Kiwi","Tucano","Pappagallo",
+    "Geco","Camaleonte","Varano","Iguana","Lucertola","Anaconda","Boa","Cobra","Mamba","Pitone",
+    "Castoro","Lontra","Foca","Tricheco","Orso polare","Volpe artica","Lemming","Renna","Alce","Bisonte"
+  ],
+  azioni: [
+    "Arrampicarsi","Fischiare","Sbadigliare","Inciampare","Galleggiare","Tuffarsi","Tamburellare","Sbirciare","Barcollare","Accarezzare",
+    "Spingere","Rimbalzare","Solleticare","Dondolare","Rotolare","Afferrare","Saltellare","Correre","Nuotare","Volare",
+    "Dormire","Mangiare","Piangere","Ridere","Urlare","Ballare","Cantare","Scavare","Abbracciare","Sculacciare",
+    "Strizzare","Soffiare","Annusare","Leccare","Morsicare","Graffiare","Grattare","Picchiare","Calciare","Lanciare",
+    "Raccogliere","Versare","Rovesciare","Mescolare","Impastare","Cucinare","Tagliare","Cucire","Tessere","Dipingere",
+    "Disegnare","Scolpire","Costruire","Demolire","Scavare","Piantare","Innaffiare","Potare","Raccogliere","Seminare",
+    "Pescare","Cacciare","Tendere un agguato","Spiare","Seguire","Fuggire","Nascondersi","Inseguire","Cadere","Alzarsi",
+    "Inginocchiarsi","Strisciare","Gattonare","Zoppicare","Saltare","Trottare","Galoppare","Planare","Scivolare","Pattinare",
+    "Remare","Veleggiare","Immersione","Arrampicata","Scalare","Scendere","Salire","Spingere","Tirare","Sollevare",
+    "Portare","Trascinare","Rotolare","Lanciare","Prendere","Mollare","Girare","Avvitare","Svitare","Martellare"
+  ],
+  proverbi: [
+    "Il lupo perde il pelo ma non il vizio",
+    "Chi dorme non piglia pesci",
+    "Gallina vecchia fa buon brodo",
+    "Non tutte le ciambelle riescono col buco",
+    "Meglio un uovo oggi che una gallina domani",
+    "L'abito non fa il monaco",
+    "Chi va piano va sano e va lontano",
+    "A caval donato non si guarda in bocca",
+    "Il mattino ha l'oro in bocca",
+    "Tra il dire e il fare c'è di mezzo il mare",
+    "Non svegliare il can che dorme",
+    "Chi semina vento raccoglie tempesta",
+    "Ride bene chi ride ultimo",
+    "Il diavolo fa le pentole ma non i coperchi",
+    "Tutto è bene quel che finisce bene",
+    "L'erba del vicino è sempre più verde",
+    "Non c'è rosa senza spine",
+    "Meglio tardi che mai",
+    "Chi trova un amico trova un tesoro",
+    "Paese che vai usanza che trovi"
+  ]
 };
 
 const CAT_CONFIG = [
@@ -367,27 +398,23 @@ function generateAndShow(){
   document.getElementById('btnRigenera').disabled = false;
 }
 
-function regenWords(){
-  // only if timer is not running
-  drawWords();
-}
+function regenWords(){ drawWords(); }
 
 function drawWords(){
   const useProverb = Math.random() < 0.20;
   const provSlot   = useProverb ? Math.floor(Math.random()*4) : -1;
   currentCards = [];
-
-  for(let i = 0; i < 4; i++){
+  for(let i=0;i<4;i++){
     const card = document.getElementById('card'+i);
     card.classList.remove('proverb');
-    const cfg  = (i === provSlot) ? PROV : CAT_CONFIG[i];
+    const cfg  = (i===provSlot) ? PROV : CAT_CONFIG[i];
     const word = pick(WORDS[cfg.key]);
-    if(i === provSlot) card.classList.add('proverb');
+    if(i===provSlot) card.classList.add('proverb');
     card.style.setProperty('--cat-color', cfg.color);
     document.getElementById('catLabel'+i).innerHTML = `<span>${cfg.icon}</span> ${cfg.label}`;
-    document.getElementById('pts'+i).textContent    = cfg.pts + ' pt';
+    document.getElementById('pts'+i).textContent    = cfg.pts+' pt';
     document.getElementById('word'+i).textContent   = word;
-    currentCards.push({ word, cfg, pts: cfg.pts });
+    currentCards.push({ word, cfg, pts:cfg.pts });
   }
 }
 
@@ -398,7 +425,7 @@ let turnsPlayed = 0;
 
 function updateTurnBanner(){
   const banner = document.getElementById('turnBanner');
-  banner.className = 'turn-banner ' + (activeTeam===1 ? 'team1' : 'team2');
+  banner.className = 'turn-banner '+(activeTeam===1?'team1':'team2');
   document.getElementById('turnLabel').textContent = `Turno — Squadra ${activeTeam}`;
   document.getElementById('scoreCard1').classList.toggle('active-playing', activeTeam===1);
   document.getElementById('scoreCard2').classList.toggle('active-playing', activeTeam===2);
@@ -407,117 +434,125 @@ function updateTurnBanner(){
 function switchTeam(){
   activeTeam = activeTeam===1 ? 2 : 1;
   turnsPlayed++;
-  if(turnsPlayed >= 2){
-    mancheCount++;
-    turnsPlayed = 0;
-    document.getElementById('mancheNum').textContent = mancheCount;
-  }
+  if(turnsPlayed>=2){ mancheCount++; turnsPlayed=0; document.getElementById('mancheNum').textContent=mancheCount; }
   updateTurnBanner();
-
-  // reset cards area for next turn
   document.getElementById('cardsGrid').classList.add('hidden');
   document.getElementById('generaWrap').classList.remove('hidden');
   wordsGenerated = false;
   document.getElementById('btnRigenera').disabled = true;
-
   showToast(`Ora tocca alla Squadra ${activeTeam}!`);
 }
 
 function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
 }
 
 // ── TIMER ────────────────────────────────────────────────────
 const TOTAL = 120;
-const CIRC  = 2 * Math.PI * 56;
+const CIRC  = 2*Math.PI*56;
 let remaining = TOTAL;
 let interval  = null;
 let paused    = false;
+let timeAtEnd = 0; // seconds remaining when turn ended
 
 function updateDisplay(){
-  const m = Math.floor(remaining/60), s = remaining%60;
-  const el = document.getElementById('timerDisplay');
-  el.textContent = m+':'+(s<10?'0':'')+s;
-  el.className = 'timer-number'+(remaining<=10?' danger':remaining<=30?' warning':'');
-  const ring = document.getElementById('ringProgress');
-  ring.style.strokeDashoffset = CIRC*(1-remaining/TOTAL);
-  ring.style.stroke = remaining<=10?'var(--red)':remaining<=30?'var(--yellow)':'var(--accent)';
+  const m=Math.floor(remaining/60), s=remaining%60;
+  const el=document.getElementById('timerDisplay');
+  el.textContent=m+':'+(s<10?'0':'')+s;
+  el.className='timer-number'+(remaining<=10?' danger':remaining<=30?' warning':'');
+  const ring=document.getElementById('ringProgress');
+  ring.style.strokeDashoffset=CIRC*(1-remaining/TOTAL);
+  ring.style.stroke=remaining<=10?'var(--red)':remaining<=30?'var(--yellow)':'var(--accent)';
 }
 
 function startTimer(){
   if(interval) return;
-  // if words not yet generated, generate them first
   if(!wordsGenerated) generateAndShow();
-  remaining = TOTAL; paused = false;
+  remaining=TOTAL; paused=false;
   updateDisplay(); setBtns(true);
-  document.getElementById('btnPause').textContent = '⏸ PAUSA';
+  document.getElementById('btnPause').textContent='⏸ PAUSA';
   document.getElementById('btnPause').classList.remove('paused');
   document.getElementById('timerRing').classList.add('ring-active');
-  interval = setInterval(tick, 1000);
+  interval=setInterval(tick,1000);
 }
 
 function tick(){
   remaining--;
   updateDisplay();
-  if(remaining <= 0){
-    clearInterval(interval); interval = null;
-    setBtns(false);
-    playAlarm();
-    openScoringOverlay('⏰ TEMPO SCADUTO!');
-  }
+  if(remaining<=0){ clearInterval(interval); interval=null; setBtns(false); playAlarm(); openScoringOverlay('⏰ TEMPO SCADUTO!', 0); }
 }
 
 function togglePause(){
-  if(!interval && !paused) return;
+  if(!interval&&!paused) return;
   if(paused){
-    paused = false;
-    interval = setInterval(tick, 1000);
-    document.getElementById('btnPause').textContent = '⏸ PAUSA';
+    paused=false; interval=setInterval(tick,1000);
+    document.getElementById('btnPause').textContent='⏸ PAUSA';
     document.getElementById('btnPause').classList.remove('paused');
     document.getElementById('timerRing').classList.add('ring-active');
   } else {
-    clearInterval(interval); interval = null; paused = true;
-    document.getElementById('btnPause').textContent = '▶ RIPRENDI';
+    clearInterval(interval); interval=null; paused=true;
+    document.getElementById('btnPause').textContent='▶ RIPRENDI';
     document.getElementById('btnPause').classList.add('paused');
     document.getElementById('timerRing').classList.remove('ring-active');
   }
 }
 
 function endTurn(){
-  clearInterval(interval); interval = null; paused = false;
+  const timeLeft = remaining;
+  clearInterval(interval); interval=null; paused=false;
   setBtns(false);
-  document.getElementById('btnPause').textContent = '⏸ PAUSA';
+  document.getElementById('btnPause').textContent='⏸ PAUSA';
   document.getElementById('btnPause').classList.remove('paused');
-  openScoringOverlay('🏁 FINE TURNO');
+  openScoringOverlay('🏁 FINE TURNO', timeLeft);
 }
 
 function setBtns(running){
   document.getElementById('btnStart').disabled    = running;
-  document.getElementById('btnRigenera').disabled = running || !wordsGenerated;
+  document.getElementById('btnRigenera').disabled = running||!wordsGenerated;
   document.getElementById('btnPause').disabled    = !running;
   document.getElementById('btnFine').disabled     = !running;
   if(!running) document.getElementById('timerRing').classList.remove('ring-active');
 }
 
+// ── BONUS CALCOLO ────────────────────────────────────────────
+// timeLeft = seconds remaining when turn ended (0 if timer ran out)
+function calcBonus(timeLeft){
+  if(timeLeft >= 90) return { pts:5, cls:'bonus5', desc:'Indovinata in meno di 30 secondi!' };
+  if(timeLeft >= 60) return { pts:3, cls:'bonus3', desc:'Indovinata entro 1 minuto' };
+  if(timeLeft >= 45) return { pts:2, cls:'bonus2', desc:'Indovinata entro 1 minuto e 15 sec' };
+  if(timeLeft >= 30) return { pts:1, cls:'bonus1', desc:'Indovinata entro 1 minuto e 30 sec' };
+  return { pts:0, cls:'bonus0', desc:'Nessun bonus velocità' };
+}
+
+let currentBonus = 0;
+
 // ── SCORING OVERLAY ──────────────────────────────────────────
-function openScoringOverlay(title){
+function openScoringOverlay(title, timeLeft){
   document.getElementById('overlayTitle').textContent = title;
   document.getElementById('overlayTeamLabel').textContent = `Squadra ${activeTeam} — Seleziona le parole indovinate`;
 
-  const list = document.getElementById('checkList');
-  list.innerHTML = '';
-  document.getElementById('totalPts').textContent = '0';
+  const bonus = calcBonus(timeLeft);
+  currentBonus = bonus.pts;
 
-  currentCards.forEach(c => {
-    const row = document.createElement('div');
-    row.className = 'check-row';
-    row.style.setProperty('--row-color', c.cfg.color);
-    row.style.setProperty('--row-rgb',   c.cfg.rgb);
-    row.dataset.pts = c.pts;
-    row.innerHTML = `
+  const bb = document.getElementById('bonusBanner');
+  bb.className = 'bonus-banner '+bonus.cls;
+  document.getElementById('bonusDesc').textContent = bonus.desc;
+  document.getElementById('bonusPts').textContent  = (bonus.pts>0?'+':'')+bonus.pts;
+
+  const list=document.getElementById('checkList');
+  list.innerHTML='';
+  document.getElementById('totalPts').textContent='0';
+  document.getElementById('totalDetail').textContent='';
+
+  currentCards.forEach(c=>{
+    const row=document.createElement('div');
+    row.className='check-row';
+    row.style.setProperty('--row-color',c.cfg.color);
+    row.style.setProperty('--row-rgb',c.cfg.rgb);
+    row.dataset.pts=c.pts;
+    row.innerHTML=`
       <div class="check-icon">✓</div>
       <div class="check-info">
         <div class="check-cat">${c.cfg.icon} ${c.cfg.label}</div>
@@ -525,10 +560,7 @@ function openScoringOverlay(title){
       </div>
       <div class="check-pts">+${c.pts}</div>
     `;
-    row.addEventListener('click', () => {
-      row.classList.toggle('checked');
-      recalcTotal();
-    });
+    row.addEventListener('click',()=>{ row.classList.toggle('checked'); recalcTotal(); });
     list.appendChild(row);
   });
 
@@ -536,28 +568,35 @@ function openScoringOverlay(title){
 }
 
 function recalcTotal(){
-  let tot = 0;
-  document.querySelectorAll('.check-row.checked').forEach(r => tot += parseInt(r.dataset.pts));
+  let wordPts=0;
+  document.querySelectorAll('.check-row.checked').forEach(r=>wordPts+=parseInt(r.dataset.pts));
+  const tot = wordPts + (wordPts>0 ? currentBonus : 0);
   document.getElementById('totalPts').textContent = tot;
+  if(wordPts>0 && currentBonus>0){
+    document.getElementById('totalDetail').textContent = `${wordPts} pt parole + ${currentBonus} pt bonus`;
+  } else {
+    document.getElementById('totalDetail').textContent = '';
+  }
 }
 
 function confirmScore(){
-  let tot = 0;
-  document.querySelectorAll('.check-row.checked').forEach(r => tot += parseInt(r.dataset.pts));
-  scores[activeTeam-1] += tot;
-  document.getElementById('score'+activeTeam).textContent = scores[activeTeam-1];
+  let wordPts=0;
+  document.querySelectorAll('.check-row.checked').forEach(r=>wordPts+=parseInt(r.dataset.pts));
+  const bonus = wordPts>0 ? currentBonus : 0;
+  const tot   = wordPts + bonus;
+  scores[activeTeam-1]+=tot;
+  document.getElementById('score'+activeTeam).textContent=scores[activeTeam-1];
   document.getElementById('overlay').classList.remove('show');
-  remaining = TOTAL;
-  updateDisplay();
+  remaining=TOTAL; updateDisplay();
   switchTeam();
 }
 
 // ── SOUND ─────────────────────────────────────────────────────
 function playAlarm(){
   try{
-    const ctx = new (window.AudioContext||window.webkitAudioContext)();
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
     [0,.38,.76,1.14,1.52].forEach(t=>{
-      const osc=ctx.createOscillator(), g=ctx.createGain();
+      const osc=ctx.createOscillator(),g=ctx.createGain();
       osc.connect(g); g.connect(ctx.destination);
       osc.frequency.value=880; osc.type='square';
       g.gain.setValueAtTime(.28,ctx.currentTime+t);
@@ -568,10 +607,44 @@ function playAlarm(){
 }
 
 // ── SCORES ────────────────────────────────────────────────────
-const scores = [0,0];
-function changeScore(team, delta){
-  scores[team-1] = Math.max(0, scores[team-1]+delta);
-  document.getElementById('score'+team).textContent = scores[team-1];
+const scores=[0,0];
+function changeScore(team,delta){
+  scores[team-1]=Math.max(0,scores[team-1]+delta);
+  document.getElementById('score'+team).textContent=scores[team-1];
+}
+
+// ── ABBANDONA ─────────────────────────────────────────────────
+function chiediAbbandona(){
+  document.getElementById('confirmOverlay').classList.add('show');
+}
+function chiudiConfirm(){
+  document.getElementById('confirmOverlay').classList.remove('show');
+}
+function abbandonaPartita(){
+  // Ferma timer se in corso
+  clearInterval(interval); interval=null; paused=false;
+  // Chiudi eventuale overlay punteggio
+  document.getElementById('overlay').classList.remove('show');
+  // Chiudi confirm
+  document.getElementById('confirmOverlay').classList.remove('show');
+  // Reset punteggi
+  scores[0]=0; scores[1]=0;
+  document.getElementById('score1').textContent='0';
+  document.getElementById('score2').textContent='0';
+  // Reset manche e squadre
+  activeTeam=1; mancheCount=1; turnsPlayed=0;
+  document.getElementById('mancheNum').textContent='1';
+  updateTurnBanner();
+  // Reset timer
+  remaining=TOTAL; updateDisplay(); setBtns(false);
+  document.getElementById('btnPause').textContent='⏸ PAUSA';
+  document.getElementById('btnPause').classList.remove('paused');
+  // Reset parole
+  wordsGenerated=false; currentCards=[];
+  document.getElementById('cardsGrid').classList.add('hidden');
+  document.getElementById('generaWrap').classList.remove('hidden');
+  document.getElementById('btnRigenera').disabled=true;
+  showToast('Partita abbandonata — si ricomincia!');
 }
 
 // ── INIT ──────────────────────────────────────────────────────
