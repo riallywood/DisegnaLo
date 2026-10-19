@@ -387,6 +387,17 @@ const PROV = { key:"proverbi", label:"Proverbio", icon:"📜", pts:8, color:"var
 
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
+// Parole già presentate in questa partita (per evitare ripetizioni)
+const usedWords = new Set();
+
+function pickUnused(arr){
+  // Filtra parole non ancora usate
+  const available = arr.filter(w => !usedWords.has(w));
+  // Se tutte esaurite (partita molto lunga), usa l'intero array
+  const pool = available.length > 0 ? available : arr;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
 let currentCards   = [];
 let wordsGenerated = false;
 
@@ -403,12 +414,16 @@ function regenWords(){ drawWords(); }
 function drawWords(){
   const useProverb = Math.random() < 0.20;
   const provSlot   = useProverb ? Math.floor(Math.random()*4) : -1;
+  // Rimuovi le parole del turno corrente dallo storico prima di rigenerare
+  // (così RIGENERA non "consuma" le parole precedenti del turno)
+  currentCards.forEach(c => usedWords.delete(c.word));
   currentCards = [];
   for(let i=0;i<4;i++){
     const card = document.getElementById('card'+i);
     card.classList.remove('proverb');
     const cfg  = (i===provSlot) ? PROV : CAT_CONFIG[i];
-    const word = pick(WORDS[cfg.key]);
+    const word = pickUnused(WORDS[cfg.key]);
+    usedWords.add(word);
     if(i===provSlot) card.classList.add('proverb');
     card.style.setProperty('--cat-color', cfg.color);
     document.getElementById('catLabel'+i).innerHTML = `<span>${cfg.icon}</span> ${cfg.label}`;
@@ -527,6 +542,8 @@ function calcBonus(timeLeft){
 }
 
 let currentBonus = 0;
+let _bonusCls  = 'bonus0';
+let _bonusDesc = 'Nessun bonus velocità';
 
 // ── SCORING OVERLAY ──────────────────────────────────────────
 function openScoringOverlay(title, timeLeft){
@@ -535,6 +552,8 @@ function openScoringOverlay(title, timeLeft){
 
   const bonus = calcBonus(timeLeft);
   currentBonus = bonus.pts;
+  _bonusCls  = bonus.cls;
+  _bonusDesc = bonus.desc;
 
   const bb = document.getElementById('bonusBanner');
   bb.className = 'bonus-banner '+bonus.cls;
@@ -567,13 +586,32 @@ function openScoringOverlay(title, timeLeft){
   document.getElementById('overlay').classList.add('show');
 }
 
+function allWordsChecked(){
+  const rows = document.querySelectorAll('.check-row');
+  const checked = document.querySelectorAll('.check-row.checked');
+  return rows.length > 0 && rows.length === checked.length;
+}
+
 function recalcTotal(){
   let wordPts=0;
   document.querySelectorAll('.check-row.checked').forEach(r=>wordPts+=parseInt(r.dataset.pts));
-  const tot = wordPts + (wordPts>0 ? currentBonus : 0);
+  const bonusApplied = allWordsChecked() ? currentBonus : 0;
+  const tot = wordPts + bonusApplied;
   document.getElementById('totalPts').textContent = tot;
-  if(wordPts>0 && currentBonus>0){
-    document.getElementById('totalDetail').textContent = `${wordPts} pt parole + ${currentBonus} pt bonus`;
+  // Aggiorna banner bonus: grigio se non tutte indovinate
+  const bb = document.getElementById('bonusBanner');
+  if(!allWordsChecked() && currentBonus > 0){
+    bb.className = 'bonus-banner bonus0';
+    document.getElementById('bonusPts').textContent = '+0';
+    document.getElementById('bonusDesc').textContent = 'Bonus solo se indovinate tutte le parole';
+  } else {
+    // Ripristina classe originale del bonus
+    bb.className = 'bonus-banner ' + _bonusCls;
+    document.getElementById('bonusPts').textContent = (currentBonus>0?'+':'')+currentBonus;
+    document.getElementById('bonusDesc').textContent = _bonusDesc;
+  }
+  if(wordPts>0 && bonusApplied>0){
+    document.getElementById('totalDetail').textContent = `${wordPts} pt parole + ${bonusApplied} pt bonus`;
   } else {
     document.getElementById('totalDetail').textContent = '';
   }
@@ -582,7 +620,7 @@ function recalcTotal(){
 function confirmScore(){
   let wordPts=0;
   document.querySelectorAll('.check-row.checked').forEach(r=>wordPts+=parseInt(r.dataset.pts));
-  const bonus = wordPts>0 ? currentBonus : 0;
+  const bonus = allWordsChecked() ? currentBonus : 0;
   const tot   = wordPts + bonus;
   scores[activeTeam-1]+=tot;
   document.getElementById('score'+activeTeam).textContent=scores[activeTeam-1];
@@ -627,6 +665,8 @@ function abbandonaPartita(){
   document.getElementById('overlay').classList.remove('show');
   // Chiudi confirm
   document.getElementById('confirmOverlay').classList.remove('show');
+  // Reset storico parole
+  usedWords.clear();
   // Reset punteggi
   scores[0]=0; scores[1]=0;
   document.getElementById('score1').textContent='0';
